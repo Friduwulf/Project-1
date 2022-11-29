@@ -1,0 +1,19 @@
+User Story:
+
+    I'm tired of having a tab open for both wikipedia and youtube when I'm researching for school projects. I would like to be able to view a video about my researched topic while I read the wiki article.
+
+Criteria:
+
+    - When the page is opened
+    - Then I am presented with a search bar, my previous searches (max 5) and the wikipedia 
+        article of the day synopsis, and 5 relevant YouTube Videos.
+    - When I type something in search and submit it
+    - Then I am presented with a wikipedia synopsis of the search, and the most relevant YouTube video.
+    - When I click on an arrow beside the video
+    - Then it gives me another relevant video, up to a maximum of 5.
+    - When I hover over the side navbar
+    - Then I am presented with a navbar containing the wikipedia table of contents from the searched article.
+    - When I search something
+    - Then a button or dropdown is added below the search bar, to quickly search it again (stored in local storage).
+    - When the history button or dropdown is clicked
+    - Then I am returned to the previous search.
