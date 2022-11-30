@@ -1,3 +1,6 @@
+var instance = M.Carousel.init({
+  fullWidth: true,
+});
 
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
 

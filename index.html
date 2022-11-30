@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WikiTube</title>
-</head>
-<body class="grey darken-4">
+  </head>
+  <body class="grey darken-4">
     <header class="container row">
-        <h1 class="center-align red-text">WikiTube</h1>
-        <div class="container row valign-wrapper">
-            <input class="col s10 m10 l10 xl10 white center-align" type="text" placeholder="search">
-            <button class="col s2 m2 l2 xl2 red"><i class="small white-text material-icons">search</i></button>
-        </div>
+      <h1 class="center-align red-text">WikiTube</h1>
+
+      <div class="container row valign-wrapper">
+        <input
+          class="col s10 m10 l10 xl10 white center-align"
+          type="text"
+          placeholder="search"
+        />
+        <button class="col s2 m2 l2 xl2 red" id="search">
+          <i class="small white-text material-icons">search</i>
+        </button>
+      </div>
+      <div class="container row valign-wrapper">
+        <button class="col s2 red white-text offset-s4" id="last_search">
+          Previous search
+        </button>
+      </div>
     </header>
 
     <main class="container row">
-        <div id="wiki" class="container row col s6">
-            <h2 class="red-text center-align">Wiki</h2>
-            <div class="row">
-                <div id="wikiCard">
-                  <div class="card grey darken-4">
-                    <div class="card-content white-text">
-                      <span class="card-title">Article Title</span>
-                      <p>Article Synopsis Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis corrupti nulla excepturi placeat optio ex earum quidem reiciendis cum quos sunt, a unde alias officia voluptatum ut fugit quisquam non animi quibusdam expedita dolorem beatae itaque? Soluta ea dignissimos dolor quia labore dolorum. Esse maiores nostrum in adipisci recusandae consequatur?</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">Link to Wiki Article</a>
-                    </div>
-                  </div>
-                </div>
+      <div id="wiki" class="container row col s6">
+        <h2 class="red-text center-align">Wiki</h2>
+        <div class="row">
+          <div id="wikiCard">
+            <div class="card grey darken-4">
+              <div class="card-content white-text">
+                <span class="card-title">Article Title</span>
+                <p>
+                  Article Synopsis Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Perspiciatis corrupti nulla excepturi
+                  placeat optio ex earum quidem reiciendis cum quos sunt, a unde
+                  alias officia voluptatum ut fugit quisquam non animi quibusdam
+                  expedita dolorem beatae itaque? Soluta ea dignissimos dolor
+                  quia labore dolorum. Esse maiores nostrum in adipisci
+                  recusandae consequatur?
+                </p>
               </div>
+              <div class="card-action">
+                <a href="#">Link to Wiki Article</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="container row col s6">
-            <h2 class="red-text center-align">YouTube</h2>
-            <img src="./assets/mateusz-michalski-spirit-deer.jpg" alt="">
-        </div>
+      </div>
+      <div class="container row col s6">
+        <!--Slider for Utube videos-->
+
+        <h2 class="red-text center-align">YouTube</h2>
+        <img src="./assets/mateusz-michalski-spirit-deer.jpg" alt="" />
+      </div>
     </main>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>
