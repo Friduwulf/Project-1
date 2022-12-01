@@ -30,9 +30,29 @@ input {
 }
 
 main {
-    min-height: 100vh !important;
+  min-height: 100vh !important;
 }
 
 img {
   max-width: 100% !important;
+}
+#wiki {
+  min-height: 30rem !important;
+}
+
+#wikiCardContainer {
+  min-height: 30rem !important;
+}
+
+#wikiCardText {
+  min-height: 20rem !important;
+}
+
+#wikiText {
+  min-height: 20rem !important;
+  max-height: 20rem !important;
+}
+
+#wikiText:hover {
+  overflow-y: scroll;
 }
