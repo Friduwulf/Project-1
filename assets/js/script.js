@@ -9,7 +9,6 @@ var parameters = {
     format: 'json',
     action: 'query',
     prop: 'extracts',
-    exchars: 250,
     exintro: true,
     explaintext: true,
     generator: 'search',
@@ -18,9 +17,9 @@ var parameters = {
 
 var submitButton = document.querySelector('#search');
 var input = document.querySelector('#searchText');
-var errorSpan = document.querySelector('#error');
 var wikiTextBox = document.querySelector('#wikiText');
 var wikiTitleBox = document.querySelector('.wikiTitle');
+var wikiLink = document.querySelector('.wikiLink');
 
 const disableUi = () => {
     input.disabled = true;
@@ -33,8 +32,9 @@ const enableUi = () => {
 };
 
 const clearPreviousResults = () => {
-    wikiTextBox.innerHTML = '';
-    errorSpan.innerHTML = '';
+    wikiTextBox.textContent = '';
+    wikiTitleBox.textContent = '';
+    wikiLink.setAttribute("href", '#');
 };
 
 const isInputEmpty = input => {
@@ -56,13 +56,15 @@ const wikiResult = results => {
     console.log(results);
     wikiTextBox.textContent = results[0].extract;
     wikiTitleBox.textContent = results[0].articleTitle;
-}
+    wikiLink.setAttribute("href", `https://en.wikipedia.org/?curid=${results[0].link}`);
+};
 
 
 const getExtract = pages => {
     var results = Object.values(pages).map(page => ({
         extract: page.extract,
         articleTitle: page.title,
+        link: page.pageid,
     }));
 
     wikiResult(results);
@@ -72,6 +74,7 @@ const searchArticle = async () => {
     var searchValue = input.value;
     if (isInputEmpty(searchValue)) return;
     parameters.gsrsearch = searchValue;
+    clearPreviousResults();
     disableUi();
     try {
         const { data } = await axios.get(endpoint,{ params:parameters });
@@ -95,8 +98,6 @@ searchEventHandler();
 ///HTML functionality///
 ////////////////////////
 
-
-
 var instance = M.Carousel.init({
   fullWidth: true,
 });
@@ -104,6 +105,11 @@ var instance = M.Carousel.init({
 /////////////////////////////
 ///YouTube API Integration///
 /////////////////////////////
+
+// *NOTE FOR GABE* \\
+// I already set the search text grab up, it's in line 74 and the variable is called searchValue. I believe you can reference it, 
+// we can also work tonight to build your fetch into my event listener.
+
 
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
 
