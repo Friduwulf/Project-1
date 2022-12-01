@@ -1,7 +1,7 @@
 //////////////////////////
 ///Wiki API Integration///
 //////////////////////////
-
+var searchValue = null;
 var endpoint = 'https://en.wikipedia.org/w/api.php';
 
 var parameters = {
@@ -110,7 +110,7 @@ var instance = M.Carousel.init({
 // I already set the search text grab up, it's in line 74 and the variable is called searchValue. I believe you can reference it, 
 // we can also work tonight to build your fetch into my event listener.
 
-
+// Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
 
 // An example fetch for dogs using the youtube data api
