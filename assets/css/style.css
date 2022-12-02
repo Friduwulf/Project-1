@@ -7,13 +7,18 @@ input {
   margin: 0 !important;
   border-radius: 0.5rem 0 0 0.5rem !important;
   height: 3rem !important;
+  border: 1px solid;
+}
+#searchText {
+  border: 1px solid;
 }
 
 #search {
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 0.5rem 0.5rem 0 !important;
-  height: 3rem !important;
+  border: 1px solid;
+  height: 3.25rem !important;
 }
 
 #last_search {
@@ -38,8 +43,8 @@ img {
 }
 
 iframe {
-    min-height: 31.5rem !important;
-    min-width:  55.1rem !important;
+  min-height: 31.5rem !important;
+  min-width: 55.1rem !important;
 }
 
 #wiki {
