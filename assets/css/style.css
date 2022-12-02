@@ -1,6 +1,6 @@
-/* *{
-    border: 0.5px solid red;
-} */
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 
 input {
   padding: 0 !important;
@@ -9,6 +9,7 @@ input {
   height: 3rem !important;
   border: 1px solid;
 }
+
 #searchText {
   border: 1px solid;
 }

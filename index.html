@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -27,12 +28,12 @@
           placeholder="What would you like to research today?"
           id="searchText"
         />
-        <button class="col s2 m2 l2 xl2 red" id="search">
+        <button class="col s2 m2 l2 xl2 red hoverable" id="search">
           <i class="small white-text material-icons">search</i>
         </button>
       </div>
       <div class="container row valign-wrapper">
-        <button class="col s2 red white-text offset-s4" id="last_search">
+        <button class="col s2 red white-text offset-s4 hoverable" id="last_search">
           Previous search
         </button>
       </div>
@@ -51,7 +52,7 @@
                 </p>
               </div>
               <div class="card-action">
-                <a class ="wikiLink" href="#">Link to Wiki Article</a>
+                <a class ="wikiLink red-text hoverable" href="#">Click here to read more!</a>
               </div>
             </div>
           </div>
