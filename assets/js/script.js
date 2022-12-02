@@ -87,74 +87,62 @@ const searchArticle = async () => {
     }
 };
 
-const searchVideo = (currentvideovalue=1) => {
-    console.log(`currentvideovalue is: ${currentvideovalue}`)
-    searchValue = input.value;
+const searchVideo = (currentVideo) => {
+    // console.log(`currentvideovalue is: ${currentVideo}`)
 
     if (isInputEmpty(searchValue)) return;
+    searchValue = input.value;
+
     clearPreviousResults();
     disableUi();
 
     // Fetches video data based on searchValue
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=2&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
+    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=2&q=${searchValue}&key=AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U`)
     .then(function(response) {
     return response.json();
     })
     .then(function(data) {
     try {
-        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentvideovalue].id.videoId}`);
+        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
+
         console.log(data)
+        enableUi();
     } catch (error) {
       alert(error)
+      enableUi();
     }
     })
 }
 
 let currentVideo = 0;
 const changeVideo = (event) => {
-    console.log(event.target.textContent)
-
-    if (event.target.textContent.includes("chevron_right")) {
-        if (currentVideo == 2) {
-            return null;
-        } else {
+    if (event.target.textContent.includes("chevron_right") && currentVideo == 1) {
+        console.log(`currentVideo: ${currentVideo} is too big`);
+        return;
+    } else if (event.target.textContent.includes("chevron_left") && currentVideo == 0) {
+        console.log(`currentVideo: ${currentVideo} is too small`);
+        return;
+    } else {
+        if (event.target.textContent.includes("chevron_right")) {
+            searchVideo(currentVideo);
             currentVideo++;
-            console.log(`currentVideo after plus: ${currentVideo}`)
-            searchVideo(currentVideo);
-        }
-    }
-    else {
-        if (currentVideo < 0) {
-            return null;
         } else {
-            currentVideo--;
-            console.log(`currentVideo after minus: ${currentVideo}`)
             searchVideo(currentVideo);
-        } 
+            currentVideo--;
+        }
     }
 }
 
 let nextVideo = $("#nextVideo").on("click", changeVideo);
 let prevVideo = $("#prevVideo").on("click", changeVideo);
 
-
-// let elems = document.querySelectorAll('.carousel');
-// let carouselInstances = M.Carousel.init(elems, {
-//     fullWidth: true,
-//     padding: 10
-// });
-// initializes the materialize carousel
-// document.addEventListener('DOMContentLoaded', function() {
-//     let elems = document.querySelectorAll('.carousel');
-//     let carouselInstances = M.Carousel.init(elems, {
-//         fullWidth: true,
-//         padding: 10
-//     });
-// });
-
 const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
+    submitButton.addEventListener('click', function() {
+        currentVideo = 0;
+        console.log(`currentVideo value at btn press: ${currentVideo}`);
+    });
     submitButton.addEventListener('click', () => searchVideo(currentVideo));
 };
 
