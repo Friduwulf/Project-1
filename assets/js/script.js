@@ -95,16 +95,19 @@ const searchVideo = async () => {
     clearPreviousResults();
     disableUi();
 
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
+  // Fetches video data based on searchValue
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
   .then(function(response) {
     return response.json();
   })
   .then(function(data) {
-    let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
-    console.log(`https://www.youtube.com/embed/${data.items[0].id.videoId}`)
+    try {
+        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
+        console.log(data)
+    } catch (error) {
+      alert(error)
+    }
   })
-
-
 }
 
 const searchEventHandler = () => {
