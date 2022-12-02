@@ -115,19 +115,19 @@ const changeVideo = (event) => {
     console.log(event.target.textContent)
 
     if (event.target.textContent.includes("chevron_right")) {
-        currentVideo++;
         if (currentVideo == 2) {
             return null;
         } else {
+            currentVideo++;
             console.log(`currentVideo after plus: ${currentVideo}`)
             searchVideo(currentVideo);
         }
     }
     else {
-        currentVideo--;
         if (currentVideo < 0) {
             return null;
         } else {
+            currentVideo--;
             console.log(`currentVideo after minus: ${currentVideo}`)
             searchVideo(currentVideo);
         } 
