@@ -2,12 +2,17 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+textarea, input, button, select {
+  font: inherit;
+}
+
 input {
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0.5rem 0 0 0.5rem !important;
   height: 3rem !important;
   border: 1px solid;
+  font-size: 1.7rem !important;
 }
 
 #searchText {
@@ -43,26 +48,36 @@ img {
   max-width: 100% !important;
 }
 
-iframe {
-  min-height: 31.5rem !important;
-  min-width: 55.1rem !important;
+h2 {
+  margin-top: 0 !important;
+}
+
+#player {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+#youtube {
+  min-height: 31rem !important;
 }
 
 #wiki {
-  min-height: 31.7rem !important;
+  margin-bottom: 0 !important;
+  min-height: 31rem !important;
 }
 
 #wikiCardContainer {
-  min-height: 31.7rem !important;
+  margin-bottom: 0 !important;
+  min-height: 31rem !important;
 }
 
 #wikiCardText {
-  min-height: 21.7rem !important;
+  min-height: 20rem !important;
 }
 
 #wikiText {
-  min-height: 21.7rem !important;
-  max-height: 21.7rem !important;
+  min-height: 20.9rem !important;
+  max-height: 20.3rem !important;
   overflow: hidden;
 }
 
