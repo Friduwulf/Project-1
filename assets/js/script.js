@@ -21,6 +21,15 @@ var wikiTextBox = document.querySelector('#wikiText');
 var wikiTitleBox = document.querySelector('.wikiTitle');
 var wikiLink = document.querySelector('.wikiLink');
 
+// initializes the materialize carousel
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, {
+        fullWidth: false,
+        padding: 10
+    });
+});
+
 const disableUi = () => {
     input.disabled = true;
     submitButton.disabled = true;
@@ -110,10 +119,13 @@ const searchVideo = async () => {
   })
 }
 
+
+
+
 const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
-    submitButton.addEventListener('click', searchVideo);
+    // submitButton.addEventListener('click', searchVideo);
 };
 
 searchEventHandler();
