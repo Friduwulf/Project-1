@@ -72,7 +72,7 @@ const getExtract = pages => {
 };
 
 const searchArticle = async () => {
-    var searchValue = input.value;
+    searchValue = input.value;
     if (isInputEmpty(searchValue)) return;
     parameters.gsrsearch = searchValue;
     clearPreviousResults();

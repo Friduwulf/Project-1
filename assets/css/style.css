@@ -1,19 +1,25 @@
-/* *{
-    border: 0.5px solid red;
-} */
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 
 input {
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0.5rem 0 0 0.5rem !important;
   height: 3rem !important;
+  border: 1px solid;
+}
+
+#searchText {
+  border: 1px solid;
 }
 
 #search {
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 0.5rem 0.5rem 0 !important;
-  height: 3rem !important;
+  border: 1px solid;
+  height: 3.25rem !important;
 }
 
 #last_search {
@@ -30,9 +36,36 @@ input {
 }
 
 main {
-    min-height: 100vh !important;
+  min-height: 100vh !important;
 }
 
 img {
   max-width: 100% !important;
+}
+
+iframe {
+  min-height: 31.5rem !important;
+  min-width: 55.1rem !important;
+}
+
+#wiki {
+  min-height: 31.7rem !important;
+}
+
+#wikiCardContainer {
+  min-height: 31.7rem !important;
+}
+
+#wikiCardText {
+  min-height: 21.7rem !important;
+}
+
+#wikiText {
+  min-height: 21.7rem !important;
+  max-height: 21.7rem !important;
+  overflow: hidden;
+}
+
+#wikiText:hover {
+  overflow-y: scroll;
 }
