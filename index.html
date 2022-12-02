@@ -7,6 +7,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -61,20 +62,33 @@
       <div class="container row col s12 xl8">
         <h2 id="youtubeTitle" class="red-text center-align">YouTube</h2>
         <div id="youtube" class="container row col s12 xl12 center-align">
-          <iframe id="player" type="text/html"
+       
+        <iframe id="player" type="text/html"
           src="https://www.youtube.com/embed/H4GrwgtbpsU"
-          frameborder="0"></iframe>
+          frameborder="0">
+        </iframe>
         </div>
-        <div id="videoCarousel">
-          <button></button>
-          <button></button>
+
+        <button id="nextVideo">
+          <i class="material-icons">
+            chevron_right
+          </i>
+        </button>
+        <button id="prevVideo">
+          <i class="material-icons">
+            chevron_left
+          </i>
+        </button>
+
+        <!-- <div id="videoCarousel">
+          
           <div class="carousel carousel-slider">
             <a class="carousel-item" href="#one!"><img src="./assets/mateusz-michalski-spirit-deer.jpg"></a>
             <a class="carousel-item" href="#two!"><img src="./assets/mateusz-michalski-spirit-deer.jpg"></a>
             <a class="carousel-item" href="#three!"><img src="./assets/mateusz-michalski-spirit-deer.jpg"></a>
             <a class="carousel-item" href="#four!"><img src="./assets/mateusz-michalski-spirit-deer.jpg"></a>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
     

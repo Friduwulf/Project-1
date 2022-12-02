@@ -21,15 +21,6 @@ var wikiTextBox = document.querySelector('#wikiText');
 var wikiTitleBox = document.querySelector('.wikiTitle');
 var wikiLink = document.querySelector('.wikiLink');
 
-// initializes the materialize carousel
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, {
-        fullWidth: false,
-        padding: 10
-    });
-});
-
 const disableUi = () => {
     input.disabled = true;
     submitButton.disabled = true;
@@ -69,7 +60,6 @@ const wikiResult = results => {
     wikiLink.setAttribute("href", `https://en.wikipedia.org/?curid=${results[0].link}`);
 };
 
-
 const getExtract = pages => {
     var results = Object.values(pages).map(page => ({
         extract: page.extract,
@@ -97,35 +87,75 @@ const searchArticle = async () => {
     }
 };
 
-const searchVideo = async () => {
-  searchValue = input.value;
+const searchVideo = (currentvideovalue=1) => {
+    console.log(`currentvideovalue is: ${currentvideovalue}`)
+    searchValue = input.value;
 
-  if (isInputEmpty(searchValue)) return;
+    if (isInputEmpty(searchValue)) return;
     clearPreviousResults();
     disableUi();
 
-  // Fetches video data based on searchValue
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
-  .then(function(response) {
+    // Fetches video data based on searchValue
+    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=2&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
+    .then(function(response) {
     return response.json();
-  })
-  .then(function(data) {
+    })
+    .then(function(data) {
     try {
-        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
+        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentvideovalue].id.videoId}`);
         console.log(data)
     } catch (error) {
       alert(error)
     }
-  })
+    })
 }
 
+let currentVideo = 0;
+const changeVideo = (event) => {
+    console.log(event.target.textContent)
+
+    if (event.target.textContent.includes("chevron_right")) {
+        currentVideo++;
+        if (currentVideo == 2) {
+            return null;
+        } else {
+            console.log(`currentVideo after plus: ${currentVideo}`)
+            searchVideo(currentVideo);
+        }
+    }
+    else {
+        currentVideo--;
+        if (currentVideo < 0) {
+            return null;
+        } else {
+            console.log(`currentVideo after minus: ${currentVideo}`)
+            searchVideo(currentVideo);
+        } 
+    }
+}
+
+let nextVideo = $("#nextVideo").on("click", changeVideo);
+let prevVideo = $("#prevVideo").on("click", changeVideo);
 
 
+// let elems = document.querySelectorAll('.carousel');
+// let carouselInstances = M.Carousel.init(elems, {
+//     fullWidth: true,
+//     padding: 10
+// });
+// initializes the materialize carousel
+// document.addEventListener('DOMContentLoaded', function() {
+//     let elems = document.querySelectorAll('.carousel');
+//     let carouselInstances = M.Carousel.init(elems, {
+//         fullWidth: true,
+//         padding: 10
+//     });
+// });
 
 const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
-    // submitButton.addEventListener('click', searchVideo);
+    submitButton.addEventListener('click', () => searchVideo(currentVideo));
 };
 
 searchEventHandler();
