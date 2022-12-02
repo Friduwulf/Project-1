@@ -49,6 +49,7 @@ const showError = (error) => {
 const enterKeyPress = (e) => {
     if (e.key === 'Enter') {
         searchArticle();
+        searchVideo();
     }
 };
 
@@ -87,9 +88,29 @@ const searchArticle = async () => {
     }
 };
 
+const searchVideo = async () => {
+  searchValue = input.value;
+
+  if (isInputEmpty(searchValue)) return;
+    clearPreviousResults();
+    disableUi();
+
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchValue}&key=AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0`)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
+    console.log(`https://www.youtube.com/embed/${data.items[0].id.videoId}`)
+  })
+
+
+}
+
 const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
+    submitButton.addEventListener('click', searchVideo);
 };
 
 searchEventHandler();
@@ -113,10 +134,4 @@ var instance = M.Carousel.init({
 // Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
 
-fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${"dogs"}&key=AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U`)
-.then(function(response) {
-  return response.json()
-})
-.then(function(data) {
-  console.log(data)
-})
+
