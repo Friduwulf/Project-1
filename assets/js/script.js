@@ -105,7 +105,7 @@ const searchVideo = () => {
     return response.json();
     })
     .then(function(data) {
-        
+
     // Pass the data from the fetch to saveCurrentData for later use
     saveCurrentData = data;  
 
@@ -120,6 +120,8 @@ const searchVideo = () => {
       enableUi();
     }
     })
+    // Clears the input value after submitting a search so the user doesn't have to delete anything to search something else
+    input.value = '';
 }
 
 let currentVideo = 0;
