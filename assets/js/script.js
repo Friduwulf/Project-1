@@ -88,8 +88,8 @@ const searchArticle = async () => {
 };
 
 let displayVideo;
-const searchVideo = (currentVideo) => {
-    // console.log(`currentvideovalue is: ${currentVideo}`)
+let saveCurrentData;
+const searchVideo = () => {
 
     if (isInputEmpty(searchValue)) return;
     searchValue = input.value;
@@ -103,8 +103,10 @@ const searchVideo = (currentVideo) => {
     return response.json();
     })
     .then(function(data) {
+    saveCurrentData = data;  
+
     try {
-        displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
+        displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
 
         console.log(data)
         enableUi();
@@ -118,20 +120,18 @@ const searchVideo = (currentVideo) => {
 let currentVideo = 0;
 const changeVideo = (event) => {
     if (event.target.textContent.includes("chevron_right") && currentVideo == 1) {
-        console.log(`currentVideo: ${currentVideo} is too big`);
+        displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         return;
     } else if (event.target.textContent.includes("chevron_left") && currentVideo == 0) {
-        console.log(`currentVideo: ${currentVideo} is too small`);
+        displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         return;
     } else {
         if (event.target.textContent.includes("chevron_right")) {
-            // searchVideo(currentVideo);
-            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
             currentVideo++;
+            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         } else {
-            // searchVideo(currentVideo);
-            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
             currentVideo--;
+            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         }
     }
 }
@@ -142,11 +142,7 @@ let prevVideo = $("#prevVideo").on("click", changeVideo);
 const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
-    submitButton.addEventListener('click', function() {
-        currentVideo = 0;
-        console.log(`currentVideo value at btn press: ${currentVideo}`);
-    });
-    submitButton.addEventListener('click', () => searchVideo(currentVideo));
+    submitButton.addEventListener('click', searchVideo);
 };
 
 searchEventHandler();
