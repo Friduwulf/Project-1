@@ -87,7 +87,9 @@ const searchArticle = async () => {
     }
 };
 
+// displayVideo is used to change the video element in the html
 let displayVideo;
+// saveCurrentData is used to hand over the fetched data over to changeVideo function, instead of fetching multiple times
 let saveCurrentData;
 const searchVideo = () => {
 
@@ -103,9 +105,12 @@ const searchVideo = () => {
     return response.json();
     })
     .then(function(data) {
+        
+    // Pass the data from the fetch to saveCurrentData for later use
     saveCurrentData = data;  
 
     try {
+        // Change to video element in the html to what the user just searched for
         displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[0].id.videoId}`);
 
         console.log(data)
@@ -119,19 +124,36 @@ const searchVideo = () => {
 
 let currentVideo = 0;
 const changeVideo = (event) => {
+
+    // First check what button what pressed, next or prev. Then check to make sure if currentVideo's value is at the min or max index of saveCurrentData's list of returned videos from the fetch.
     if (event.target.textContent.includes("chevron_right") && currentVideo == 1) {
+
+        // If currentVideo's index is at the END of saveCurrentData's list of videos, update the video element in the html but do NOT change currentVideo's value
         displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         return;
+
     } else if (event.target.textContent.includes("chevron_left") && currentVideo == 0) {
+
+        // If currentVideo's index is at the START of saveCurrentData's list of videos, update the video element in the html but do NOT change currentVideo's value
         displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
         return;
+
     } else {
+        // If currentVideo's value is not already at the min or max index of saveCurrentData's list of videos, just check what button was pressed
         if (event.target.textContent.includes("chevron_right")) {
+
+            // This time currentVideo's value will be INCREMENTED to move on to the NEXT index of videos in saveCurrentData
             currentVideo++;
+            // Change the video element in html
             displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
+
         } else {
+
+            // This time currentVideo's value will be DECREMENTED to move on to the PREVIOUS index of videos in saveCurrentData
             currentVideo--;
+            // Change the video element in html
             displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
+
         }
     }
 }
