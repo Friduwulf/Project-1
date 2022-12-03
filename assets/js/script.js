@@ -87,6 +87,7 @@ const searchArticle = async () => {
     }
 };
 
+let displayVideo;
 const searchVideo = (currentVideo) => {
     // console.log(`currentvideovalue is: ${currentVideo}`)
 
@@ -103,7 +104,7 @@ const searchVideo = (currentVideo) => {
     })
     .then(function(data) {
     try {
-        let displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
+        displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
 
         console.log(data)
         enableUi();
@@ -124,10 +125,12 @@ const changeVideo = (event) => {
         return;
     } else {
         if (event.target.textContent.includes("chevron_right")) {
-            searchVideo(currentVideo);
+            // searchVideo(currentVideo);
+            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
             currentVideo++;
         } else {
-            searchVideo(currentVideo);
+            // searchVideo(currentVideo);
+            displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${data.items[currentVideo].id.videoId}`);
             currentVideo--;
         }
     }
