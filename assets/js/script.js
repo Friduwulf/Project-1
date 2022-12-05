@@ -92,6 +92,7 @@ let displayVideo;
 // saveCurrentData is used to hand over the fetched data over to changeVideo function, instead of fetching multiple times
 let saveCurrentData;
 const searchVideo = () => {
+    currentVideo = 0;
 
     if (isInputEmpty(searchValue)) return;
     searchValue = input.value;
