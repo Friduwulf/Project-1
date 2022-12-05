@@ -2,12 +2,20 @@
 <html lang="en">
   <head>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -34,7 +42,10 @@
         </button>
       </div>
       <div class="container row valign-wrapper">
-        <button class="col s2 red white-text offset-s4 hoverable" id="last_search">
+        <button
+          class="col s2 red white-text offset-s4 hoverable"
+          id="last_search"
+        >
           Previous search
         </button>
       </div>
@@ -48,11 +59,22 @@
               <div class="card-content white-text">
                 <span class="card-title wikiTitle">Article Title</span>
                 <p id="wikiText">
-                  Article Synopsis
+                  This application is designed to present you with both a
+                  synopsys of your searched keywords, along with some relevant
+                  video options. <br />
+                  <br />
+                  For example, if you search "Cats", you will be given the top 5
+                  most relevant videos from youtube about cats, as well as an
+                  extract from the "Cats" wikipedia. <br />
+                  <br />
+                  If you still would like more information on your searched
+                  subject, click the link below to go directly to the wikipedia!
                 </p>
               </div>
               <div class="card-action">
-                <a class ="wikiLink red-text hoverable" href="#">Click here to read more!</a>
+                <a class="wikiLink red-text hoverable" href="#"
+                  >Click here to read more!</a
+                >
               </div>
             </div>
           </div>
@@ -60,26 +82,24 @@
       </div>
       <div class="container row col s12 xl8">
         <div id="youtube" class="container row col s12 xl12 center-align">
-       
-        <iframe id="player" type="text/html"
-          src="https://www.youtube.com/embed/H4GrwgtbpsU"
-          frameborder="0">
-        </iframe>
+          <iframe
+            id="player"
+            type="text/html"
+            src="https://www.youtube.com/embed/H4GrwgtbpsU"
+            frameborder="0"
+          >
+          </iframe>
         </div>
 
         <button id="nextVideo">
-          <i class="material-icons">
-            chevron_right
-          </i>
+          <i class="material-icons"> chevron_right </i>
         </button>
         <button id="prevVideo">
-          <i class="material-icons">
-            chevron_left
-          </i>
+          <i class="material-icons"> chevron_left </i>
         </button>
       </div>
     </main>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
