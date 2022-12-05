@@ -89,3 +89,9 @@ h2 {
 #wikiText:hover {
   overflow-y: scroll;
 }
+
+#nextVideo,
+#prevVideo {
+  margin-right: 5px;
+  border: 1px solid black;
+}
