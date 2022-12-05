@@ -1,8 +1,11 @@
-*{
-    font-family: 'Montserrat', sans-serif;
+* {
+  font-family: "Montserrat", sans-serif;
 }
 
-textarea, input, button, select {
+textarea,
+input,
+button,
+select {
   font: inherit;
 }
 
@@ -30,6 +33,7 @@ input {
 #last_search {
   height: 45px;
   width: 150px;
+  margin-right: 5px;
   border: 1px solid black;
   border-radius: 5px;
 }

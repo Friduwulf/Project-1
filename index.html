@@ -16,10 +16,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,6 +27,9 @@
       <h1 class="center-align red-text">WikiTube</h1>
 
       <div class="container row valign-wrapper">
+        <button class="col s2 m2 red white-text hoverable" id="last_search">
+          Previous search
+        </button>
         <input
           class="col s10 m10 l10 xl10 white center-align"
           type="text"
@@ -41,14 +40,7 @@
           <i class="small white-text material-icons">search</i>
         </button>
       </div>
-      <div class="container row valign-wrapper">
-        <button
-          class="col s2 red white-text offset-s4 hoverable"
-          id="last_search"
-        >
-          Previous search
-        </button>
-      </div>
+      <div class="container row valign-wrapper"></div>
     </header>
 
     <main class="container row">
@@ -57,7 +49,7 @@
           <div id="wikiCardText">
             <div class="card grey darken-4">
               <div class="card-content white-text">
-                <span class="card-title wikiTitle">Article Title</span>
+                <span class="card-title wikiTitle">How To Use This App</span>
                 <p id="wikiText">
                   This application is designed to present you with both a
                   synopsys of your searched keywords, along with some relevant
