@@ -100,7 +100,7 @@ const searchVideo = () => {
     disableUi();
 
     // Fetches video data based on searchValue
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=2&q=${searchValue}&key=AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U`)
+    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=${searchValue}&key=AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U`)
     .then(function(response) {
     return response.json();
     })
@@ -128,7 +128,7 @@ let currentVideo = 0;
 const changeVideo = (event) => {
 
     // First check what button what pressed, next or prev. Then check to make sure if currentVideo's value is at the min or max index of saveCurrentData's list of returned videos from the fetch.
-    if (event.target.textContent.includes("chevron_right") && currentVideo == 1) {
+    if (event.target.textContent.includes("chevron_right") && currentVideo == 4) {
 
         // If currentVideo's index is at the END of saveCurrentData's list of videos, update the video element in the html but do NOT change currentVideo's value
         displayVideo = $("#player").attr("src", `https://www.youtube.com/embed/${saveCurrentData.items[currentVideo].id.videoId}`);
