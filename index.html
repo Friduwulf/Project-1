@@ -26,12 +26,12 @@
     <header class="container row">
       <h1 class="center-align red-text">WikiTube</h1>
 
-      <div class="container row valign-wrapper">
+      <div class="container row valign-wrapper input-field">
         <button class="col s2 m2 red white-text hoverable" id="last_search">
           Previous search
         </button>
         <input
-          class="col s10 m10 l10 xl10 white center-align"
+          class="col s10 m10 l10 xl10 white center-align validate"
           type="text"
           placeholder="What would you like to research today?"
           id="searchText"
@@ -81,14 +81,13 @@
             frameborder="0"
           >
           </iframe>
+          <button class="red white-text hoverable" id="prevVideo">
+            <i class="material-icons"> chevron_left </i>
+          </button>
+          <button class="red white-text hoverable" id="nextVideo">
+            <i class="material-icons"> chevron_right </i>
+          </button>
         </div>
-
-        <button id="nextVideo">
-          <i class="material-icons"> chevron_right </i>
-        </button>
-        <button id="prevVideo">
-          <i class="material-icons"> chevron_left </i>
-        </button>
       </div>
 
       <div id="modal1" class="modal">
