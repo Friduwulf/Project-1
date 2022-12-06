@@ -34,19 +34,9 @@ const enableUi = () => {
     submitButton.disabled = false;
 };
 
-const clearPreviousResults = () => {
-    wikiTextBox.textContent = '';
-    wikiTitleBox.textContent = '';
-    wikiLink.setAttribute("href", '#');
-};
-
 const isInputEmpty = input => {
     if (!input || input === '') return true;
     return false;
-};
-
-const showError = (error) => {
-    alert(error);
 };
 
 const enterKeyPress = (e) => {
@@ -77,7 +67,6 @@ const searchArticle = async () => {
     searchValue = input.value;
     if (isInputEmpty(searchValue)) return;
     parameters.gsrsearch = searchValue;
-    clearPreviousResults();
     disableUi();
     try {
         const { data } = await axios.get(endpoint,{ params:parameters });
@@ -87,7 +76,7 @@ const searchArticle = async () => {
         storedSearches.push(searchValue);
         localStorage.setItem("previousSearch", JSON.stringify(storedSearches));
     } catch (error) {
-        showError(error);
+        $('#modal1').modal('open');
         enableUi();
     }
 };
@@ -102,7 +91,6 @@ const searchVideo = () => {
     if (isInputEmpty(searchValue)) return;
     searchValue = input.value;
 
-    clearPreviousResults();
     disableUi();
 
     // Fetches video data based on searchValue
@@ -122,7 +110,7 @@ const searchVideo = () => {
         console.log(data)
         enableUi();
     } catch (error) {
-      alert(error)
+      $('#modal1').modal('open');
       enableUi();
     }
     })
@@ -178,12 +166,12 @@ const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
     submitButton.addEventListener('click', searchVideo);
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        var instance = M.Modal.init(elems, {});
-      });
     previousSearchButton.addEventListener('click', searchLast);
 };
+
+$(document).ready(function() {
+    $('.modal').modal();
+});
 
 searchEventHandler();
 // Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
