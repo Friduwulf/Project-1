@@ -156,7 +156,10 @@ const changeVideo = (event) => {
 
 const searchLast = () => {
     let prevSearch = JSON.parse(localStorage.getItem('previousSearch'));
-    input.value = prevSearch[prevSearch.length-2];
+    console.log(prevSearch);
+    if( prevSearch.length > 1) {
+        input.value = prevSearch[prevSearch.length - 2];
+    }
 };
 
 let nextVideo = $("#nextVideo").on("click", changeVideo);
