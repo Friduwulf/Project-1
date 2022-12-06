@@ -15,6 +15,8 @@ var parameters = {
     gsrlimit: 1,
 };
 
+var storedSearches = [];
+
 var submitButton = document.querySelector('#search');
 var input = document.querySelector('#searchText');
 var wikiTextBox = document.querySelector('#wikiText');
@@ -82,8 +84,8 @@ const searchArticle = async () => {
         if (data.error) throw new Error(data.error.info);
         getExtract(data.query.pages);
         enableUi();
-        localStorage.clear();
-        localStorage.setItem("previousSearch", searchValue);
+        storedSearches.push(searchValue);
+        localStorage.setItem("previousSearch", JSON.stringify(storedSearches));
     } catch (error) {
         showError(error);
         enableUi();
@@ -165,8 +167,8 @@ const changeVideo = (event) => {
 }
 
 const searchLast = () => {
-    let prevSearch = localStorage.getItem('previousSearch');
-    input.value = prevSearch;
+    let prevSearch = JSON.parse(localStorage.getItem('previousSearch'));
+    input.value = prevSearch[prevSearch.length-2];
 };
 
 let nextVideo = $("#nextVideo").on("click", changeVideo);
