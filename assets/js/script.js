@@ -168,6 +168,10 @@ const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
     submitButton.addEventListener('click', searchVideo);
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instance = M.Modal.init(elems, {});
+      });
 };
 
 searchEventHandler();
