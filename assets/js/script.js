@@ -182,7 +182,5 @@ const searchEventHandler = () => {
 };
 
 searchEventHandler();
-
-
 // Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
