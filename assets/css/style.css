@@ -92,6 +92,44 @@ h2 {
 
 #nextVideo,
 #prevVideo {
-  margin-right: 5px;
+  margin-top: 20px;
   border: 1px solid black;
+  height: 60px;
+  width: 165px;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+#nextVideo {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+#prevVideo {
+  border-radius: 0.5rem 0 0 0.5rem;
+  margin-right: 20px;
+}
+
+@media (max-width: 1399px) {
+  ::-webkit-input-placeholder {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1199px) {
+  ::-webkit-input-placeholder {
+    font-size: 16px;
+  }
+	#nextVideo,#prevVideo {
+  margin-top: 60px;
+	}
+}
+@media (max-width: 1099px) {
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+  }
+}
+@media (max-width: 699px) {
+  ::-webkit-input-placeholder {
+    font-size: 12px;
+  }
+	#nextVideo,#prevVideo {
+		margin-top: 30px;
+		margin-right: 10px;
+		}
 }
