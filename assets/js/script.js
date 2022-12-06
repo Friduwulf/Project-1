@@ -178,11 +178,13 @@ const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
     submitButton.addEventListener('click', searchVideo);
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instance = M.Modal.init(elems, {});
+      });
     previousSearchButton.addEventListener('click', searchLast);
 };
 
 searchEventHandler();
-
-
 // Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
