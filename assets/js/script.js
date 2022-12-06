@@ -20,6 +20,7 @@ var input = document.querySelector('#searchText');
 var wikiTextBox = document.querySelector('#wikiText');
 var wikiTitleBox = document.querySelector('.wikiTitle');
 var wikiLink = document.querySelector('.wikiLink');
+var previousSearchButton = document.querySelector('#last_search');
 
 const disableUi = () => {
     input.disabled = true;
@@ -81,6 +82,8 @@ const searchArticle = async () => {
         if (data.error) throw new Error(data.error.info);
         getExtract(data.query.pages);
         enableUi();
+        localStorage.clear();
+        localStorage.setItem("previousSearch", searchValue);
     } catch (error) {
         showError(error);
         enableUi();
@@ -161,6 +164,11 @@ const changeVideo = (event) => {
     }
 }
 
+const searchLast = () => {
+    let prevSearch = localStorage.getItem('previousSearch');
+    input.value = prevSearch;
+};
+
 let nextVideo = $("#nextVideo").on("click", changeVideo);
 let prevVideo = $("#prevVideo").on("click", changeVideo);
 
@@ -168,27 +176,11 @@ const searchEventHandler = () => {
     input.addEventListener('keydown', enterKeyPress);
     submitButton.addEventListener('click', searchArticle);
     submitButton.addEventListener('click', searchVideo);
+    previousSearchButton.addEventListener('click', searchLast);
 };
 
 searchEventHandler();
 
-////////////////////////
-///HTML functionality///
-////////////////////////
-
-var instance = M.Carousel.init({
-  fullWidth: true,
-});
-
-/////////////////////////////
-///YouTube API Integration///
-/////////////////////////////
-
-// *NOTE FOR GABE* \\
-// I already set the search text grab up, it's in line 74 and the variable is called searchValue. I believe you can reference it, 
-// we can also work tonight to build your fetch into my event listener.
 
 // Devin's youtube API key: AIzaSyApu7PF3orxR1Krl_fgkehmLRmr5jhWPp0
 // Gabes youtube API key: AIzaSyBGcs-zAc9WhKvOuKcSsyF8KXUopPe7d6U
-
-
